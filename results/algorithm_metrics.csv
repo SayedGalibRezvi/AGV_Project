@@ -1,0 +1,5 @@
+Algorithm,Execution Time (s),Path Length,Total Cost,Explored Nodes
+A*,2.2e-05,5,20,5
+Dijkstra,1.7e-05,5,23,5
+DFS,1.5e-05,5,28,5
+BFS,2.5e-05,5,29,5
