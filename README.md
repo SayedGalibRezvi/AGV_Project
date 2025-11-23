@@ -58,38 +58,6 @@ manim -pqh -r 1920,1080 --fps 60 ../multi_algorithm_city_animation.py MultiRobot
 
 ---
 
-## 📁 Repository Structure
-
-AGV_Project/
-│
-├── code/
-│   ├── scan_a_city.py
-│   ├── graph.py
-│   ├── multi_algorithm_city_animation.py
-│   ├── compare_algorithms.py
-│   ├── shortest_path_demo.py
-│   └── ...
-│
-├── flowcharts/
-│   ├── 01_system_workflow.puml
-│   ├── 02_qr_localization.puml
-│   ├── 03_astar_path_planning.puml
-│   └── exported_diagrams/
-│
-├── media/
-│   ├── city.png
-│   ├── robot.png
-│   └── QR_xx.png
-│
-├── results/
-│   ├── algorithm_metrics.csv
-│   ├── execution_time_plot.png
-│   └── algorithm_comparison.png
-│
-└── README.md
-
----
-
 ## ⚙️ System Workflow
 
 1️⃣ QR Localization
