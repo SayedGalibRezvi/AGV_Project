@@ -1,81 +1,23 @@
-# 🤖 Vision-Based Node Localization and Path Planning for Abstract AGV Logistics
+# 🤖 Vision-Based Node Localization & Path Planning for AGV Logistics
 
 ## 🧠 Overview
-This project presents a **vision-based AGV (Automated Guided Vehicle)** system designed to autonomously navigate through predefined nodes using **QR-code-based localization** and **graph-based path planning**.
+This project implements a **vision-based AGV (Automated Guided Vehicle)** navigation system that uses **QR codes for localization** and **graph algorithms for path planning**.
 
-The AGV identifies its current node using camera-detected QR codes and computes the **shortest and most efficient route** to its destination using advanced pathfinding algorithms.
+A camera detects physical QR codes representing nodes (A, B, C…), identifies the robot’s current location, and computes the **optimal path** to a destination using **A\***.  
+Additional algorithms — **Dijkstra**, **BFS**, and **DFS** — are included to compare performance.
 
-While the project includes a comparative evaluation between multiple algorithms —  
-- 🟥 **A\*** (Heuristic-based optimal pathfinding)  
-- 🟦 **Dijkstra’s Algorithm** (Uniform-cost search)  
-- 🟩 **Depth-First Search (DFS)**  
-- 🟧 **Breadth-First Search (BFS)**  
-
-👉 The **primary algorithm used in this AGV system is A\***, as it combines **optimal path accuracy** (like Dijkstra) with **heuristic-driven efficiency**, making it highly suitable for **real-time navigation**.
-
-The other algorithms were implemented only for **comparison and performance benchmarking**, providing insight into how A\* consistently outperforms them in:
-- ⏱️ **Execution time**
-- 💰 **Path cost**
-- 🧩 **Route accuracy**
-
-A\* uses a heuristic function to estimate the remaining distance between nodes, allowing the AGV to intelligently predict the most promising next step and minimize unnecessary traversal — ideal for environments with dynamic or weighted paths.
+The system includes:
+- 📸 QR-based localization  
+- 🧭 Weighted graph path planning  
+- 🚀 A\* for shortest path computation  
+- 📊 Algorithm performance analysis  
+- 🎞 Manim city-style visualization  
 
 ---
 
-## ⚙️ System Workflow
+## 🚀 How to Run the Project
 
-### 1️⃣ QR Code Detection
-- The AGV camera scans physical QR codes to detect nodes.  
-- Each QR code corresponds to a **graph node** (e.g., A, B, C...).  
-- Detected coordinates are sent to the control system for localization.
-
-### 2️⃣ Path Planning
-- The system builds a **weighted graph** where each edge represents a route and its travel cost.  
-- Different algorithms (A*, Dijkstra, BFS, DFS) compute possible paths between a start and goal node.  
-- Each algorithm’s route,
-
-### 3️⃣ Route Visualization
-- The computed paths are visualized using **NetworkX** and **Matplotlib**.  
-- Each algorithm is displayed in its own color and style:
-  - A*: 🔴 Red (Dashed)
-  - Dijkstra: 🔵 Blue (Solid)
-  - DFS: 🟢 Green (Dash-dot)
-  - BFS: 🟠 Orange (Dotted)
-
-### 4️⃣ Evaluation and Comparison
-- Each algorithm is evaluated on:
-  - ⏱️ **Execution Time**
-  - 💰 **Total Path Cost**
-  - 🧩 **Path Length**
-  - 🔁 **Nodes Explored**
-
-- Metrics are automatically saved into CSV files for visualization.
-
-- ---
-
-## 📊 Evaluation Metrics
-
-| Metric | Description |
-|--------|--------------|
-| **Execution Time** | Time required for the algorithm to compute the route |
-| **Total Cost** | Sum of edge weights along the path |
-| **Path Length** | Number of nodes in the selected route |
-| **Explored Nodes** | Total number of nodes visited during search |
-
----
-
-## 📈 Results Summary
-
-### 🧮 Algorithm Performance (1000 Runs Average)
-| Algorithm | Avg. Time (s) | Cost | Path Length |
-|------------|---------------|------|--------------|
-| **A\*** | **0.000022** | **20** | **5** |
-| Dijkstra | 0.000017 | 23 | 5 |
-| DFS | 0.000015 | 28 | 5 |
-| BFS | 0.000025 | 29 | 5 |
-
-✅ **Observation:**  
-A\* achieves the **lowest total path cost** and **optimal route length** while maintaining competitive execution time.  
-This makes it ideal for **real-time AGV applications** where both speed and efficiency are essential.
-
----
+### 1️⃣ Clone the Repository
+```bash
+git clone https://github.com/SayedGalibRezvi/AGV_Project.git
+cd AGV_Project
