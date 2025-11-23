@@ -1,0 +1,52 @@
+@startuml
+title A* Path Planning on Node Graph
+
+start
+
+:Input graph G(V,E)\nwith edge costs;
+:Input start node s\nand goal node g;
+
+:open_set = {s};
+:closed_set = ∅;
+:g_score[n] = ∞ for all n;
+:f_score[n] = ∞ for all n;
+:g_score[s] = 0;
+:f_score[s] = heuristic(s, g);
+
+while (open_set not empty?) is (yes)
+  :Select node current\nwith lowest f_score\nfrom open_set;
+
+  if (current == g?) then (yes)
+    :Reconstruct path\nfrom s to g\n(using came_from[]);
+    :Return optimal path,\npath cost, stats;
+    stop
+  endif
+
+  :Remove current from open_set;
+  :Add current to closed_set;
+
+  :For each neighbor\nof current;
+
+  repeat
+    if (neighbor in closed_set?) then (yes)
+      :Skip neighbor;
+    else (no)
+      :tentative_g = g_score[current]\n+ cost(current, neighbor);
+
+      if (neighbor not in open_set\nOR tentative_g < g_score[neighbor]) then (better)
+        :came_from[neighbor] = current;
+        :g_score[neighbor] = tentative_g;
+        :f_score[neighbor] = g_score[neighbor]\n+ heuristic(neighbor, g);
+
+        if (neighbor not in open_set) then (not in)
+          :Add neighbor to open_set;
+        endif
+      endif
+    endif
+  repeat while (more neighbors?) is (next neighbor)
+
+endwhile (open_set empty)
+
+:No path found;\nreport failure;
+stop
+@enduml

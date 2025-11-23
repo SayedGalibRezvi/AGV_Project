@@ -1,0 +1,33 @@
+@startuml
+title QR-Based Node Localization
+
+start
+
+:'Initialize camera\n(cv2.VideoCapture)';
+if (Camera opened?) then (yes)
+  :Show "Scanning for QR..." on console;
+
+  while (User quits? == no)
+    :Capture frame\nfrom camera;
+    :Decode QR codes\nfrom frame;
+
+    if (Any QR detected?) then (yes)
+      :Read QR data\n(string);
+      :Normalize text\n(trim, upper-case);
+      :Map QR string → node ID;
+      :Set current_node = node ID;
+      :Display "Current node = X";
+    else (no)
+      :No QR in frame;
+    endif
+
+    :Show camera window\n(cv2.imshow);
+  endwhile (user presses 'q')
+
+  :Release camera\nand close windows;
+else (no)
+  :Print error\n"Cannot open camera";
+endif
+
+stop
+@enduml

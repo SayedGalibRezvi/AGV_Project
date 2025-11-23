@@ -1,0 +1,39 @@
+@startuml
+title Vision-Based Node Localization and Path Planning for Abstract AGV Logistics
+
+start
+
+:'Place physical QR codes\n(nodes in environment)';
+:'Define graph in Python\n(nodes, edges, travel costs)';
+
+:'Start system on Jetson Nano';
+
+repeat
+  :Capture video frame\nfrom camera;
+  :Detect & decode QR\n(OpenCV + pyzbar);
+
+  if (QR detected?) then (yes)
+    :Extract QR data\n(node ID);
+    :Set current_node = QR node;
+  else (no)
+    :No valid QR found;
+  endif
+repeat while (QR detected? == no) is (continue scanning)
+
+:'User inputs\ndestination node';
+
+:'Select algorithm\n(A*, Dijkstra, Greedy, etc.)';
+
+:'Run path planning\non current_node → destination';
+
+if (Path found?) then (yes)
+  :Generate optimal path\n(sequence of nodes);
+  :Simulate robot moving\nnode by node along path;
+  :Display path, cost,\nexpanded nodes, time;
+  :Update visualization\n(city map + robot icon);
+else (no)
+  :Report error:\n"No valid path";
+endif
+
+stop
+@enduml
